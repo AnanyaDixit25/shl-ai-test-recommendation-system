@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/vector/index.faiss
+data/vector/metadata.json
+data/processed/processed_catalogue.json
