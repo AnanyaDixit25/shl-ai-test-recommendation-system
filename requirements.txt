@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+pandas
+numpy
+python-dotenv
+tqdm
+black
+isort
+pytest
+sentence-transformers
+faiss-cpu
+scikit-learn
+torch
