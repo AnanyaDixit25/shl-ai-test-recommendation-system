@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://ananyadixit12-shl-recommendation-api.hf.space";
 
 const T = {
   bg:"#F5F5DC",bgCard:"#FEFCF4",bgCardHover:"#FDF8EC",bgPanel:"#EDE8D5",bgInput:"#FAF8EF",

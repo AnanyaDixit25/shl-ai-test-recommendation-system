@@ -281,8 +281,8 @@ INJECTION_MAP: Dict[str, List[str]] = {
    "consultant":           ["shl-verify-interactive-numerical-calculation",
                             "verify-verbal-ability-next-generation",
                             "occupational-personality-questionnaire-opq32r",
-                            "professional-7-1-solution",
-                            "administrative-professional-short-form"],
+                         "professional-7-1-solution",
+                         "administrative-professional-short-form"],
     "product manager":      ["agile-project-management-new",
                              "occupational-personality-questionnaire-opq32r"],
     "project manager":      ["agile-project-management-new"],
@@ -332,8 +332,8 @@ class SemanticSearchEngine:
 
     def __init__(
         self,
-        index_path: str = "data/embeddings/vector_index.faiss",
-        meta_path: str = "data/embeddings/metadata.pkl",
+        index_path: str = "data/vector/index.faiss",
+        meta_path: str = "data/vector/metadata.json",
         normalize: bool = True,
     ):
         logger.info("Initializing SemanticSearchEngine v4 PRECISION...")
@@ -348,9 +348,8 @@ class SemanticSearchEngine:
             raise RuntimeError("FAISS index load failed")
 
         try:
-            import pickle
-            with open(meta_path, "rb") as f:
-                self.metadata = pickle.load(f)
+            with open(meta_path, "r", encoding="utf-8") as f:
+                self.metadata = json.load(f)
             logger.info(f"Metadata loaded: {meta_path} | Records: {len(self.metadata)}")
         except Exception as e:
             logger.error(f"Failed to load metadata: {e}")
