@@ -124,7 +124,6 @@ uvicorn fastapi_api_layer:app --host 0.0.0.0 --port 8000 --reload
 ### Evaluation Dashboard
 <img width="2985" height="2653" alt="shl_eval_dashboard (1)" src="https://github.com/user-attachments/assets/5833331f-a139-43f2-b2f4-c2559b582c4d" />
 
-![Pipeline Accuracy Dashboard](docs/images/pipeline-accuracy-dashboard.png)
 
 ### Interpretation of Final Results
 
@@ -175,20 +174,28 @@ If desired, future optimization can focus on:
 ## 🖼️ Product Screenshots
 
 ### Dashboard (Home)
-<img width="1920" height="1080" alt="Screenshot (5085)" src="https://github.com/user-attachments/assets/427b8bda-5383-4f5f-8e00-7fe5a94e8864" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2208db96-488e-4c16-ad58-6f0f26f96288" />
+
 
 ![Dashboard Home](docs/images/dashboard-home.png)
 
-### Search Results – Data Science
+### Search Results – Java Developer
  
-<img width="1920" height="1080" alt="Screenshot (5086)" src="https://github.com/user-attachments/assets/87e86272-fe54-41f6-84ac-0ba02c2a70cb" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/74de9893-024f-4ecc-87ba-57321a4f0558" />
 
-![Search Results Data Science](docs/images/search-results-data-science.png)
 
-### Search Results – Digital Marketing
-<img width="1920" height="1080" alt="Screenshot (5089)" src="https://github.com/user-attachments/assets/344079d3-91ec-4718-871c-9cc8d100fd58" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c29d5852-9c1d-4ce9-95e4-a80e30f9d6fe" />
 
-![Search Results Digital Marketing](docs/images/search-results-digital-marketing.png)
+
+### Search Results – Situational Judgements
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2470c457-d4ea-4ba6-83b9-5ec699c68a6d" />
+
+### Search Results – Sales Manager
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5664665d-9011-4df7-83fa-b43818bc871b" />
+
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c827066c-1088-491a-802b-c6f049268a36" />
+
 
 ---
 
