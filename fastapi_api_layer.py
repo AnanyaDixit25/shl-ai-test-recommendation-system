@@ -22,6 +22,9 @@ from pydantic import BaseModel
 from ai.semantic_search import SemanticSearchEngine
 from ai.recommender import RecommenderEngine
 
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | API | %(message)s")
 logger = logging.getLogger("API")
 

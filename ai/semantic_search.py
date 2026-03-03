@@ -332,8 +332,8 @@ class SemanticSearchEngine:
 
     def __init__(
         self,
-        index_path: str = "data/vector/index.faiss",
-        meta_path: str = "data/vector/metadata.json",
+        index_path: str = "data/embeddings/vector_index.faiss",
+        meta_path: str = "data/embeddings/metadata.pkl",
         normalize: bool = True,
     ):
         logger.info("Initializing SemanticSearchEngine v4 PRECISION...")
@@ -348,8 +348,9 @@ class SemanticSearchEngine:
             raise RuntimeError("FAISS index load failed")
 
         try:
-            with open(meta_path, "r", encoding="utf-8") as f:
-                self.metadata = json.load(f)
+            import pickle
+            with open(meta_path, "rb") as f:
+                self.metadata = pickle.load(f)
             logger.info(f"Metadata loaded: {meta_path} | Records: {len(self.metadata)}")
         except Exception as e:
             logger.error(f"Failed to load metadata: {e}")
