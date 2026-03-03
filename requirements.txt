@@ -13,3 +13,4 @@ faiss-cpu
 scikit-learn
 torch
 requests
+beautifulsoup4

@@ -10,6 +10,9 @@ Changes from v7:
 All other logic unchanged.
 """
 import os, re, json, logging
+from dotenv import load_dotenv
+
+load_dotenv()
 from typing import Optional
 import requests as http_req
 from fastapi import FastAPI
@@ -309,5 +312,6 @@ def recommend_from_url(body: dict):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("fastapi_api_layer:app", host="0.0.0.0", port=8000,
-                reload=True, log_level="info")
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("fastapi_api_layer:app", host="0.0.0.0", port=port,
+                log_level="info")
