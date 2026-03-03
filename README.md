@@ -111,6 +111,9 @@ uvicorn fastapi_api_layer:app --host 0.0.0.0 --port 8000 --reload
 
 ### 2) Dataset Scraping Pipeline
 
+[shl_catalogue_enriched_v2.csv](https://github.com/user-attachments/files/25707970/shl_catalogue_enriched_v2.csv)
+
+
 - Notebook link:  
   https://colab.research.google.com/drive/1MpHZisbbjAewx7oaqFR3-owcVVcUzRyQ?usp=sharing
 
@@ -119,6 +122,7 @@ uvicorn fastapi_api_layer:app --host 0.0.0.0 --port 8000 --reload
 ## 📊 Pipeline Accuracy Results (Attached)
 
 ### Evaluation Dashboard
+<img width="2985" height="2653" alt="shl_eval_dashboard (1)" src="https://github.com/user-attachments/assets/5833331f-a139-43f2-b2f4-c2559b582c4d" />
 
 ![Pipeline Accuracy Dashboard](docs/images/pipeline-accuracy-dashboard.png)
 
@@ -214,7 +218,7 @@ Request body:
   "max_duration": 60,
   "language": "english"
 }
-<img width="2985" height="2653" alt="shl_eval_dashboard (1)" src="https://github.com/user-attachments/assets/5833331f-a139-43f2-b2f4-c2559b582c4d" />
+
 
 
 ---
