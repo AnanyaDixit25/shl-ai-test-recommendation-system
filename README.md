@@ -233,7 +233,10 @@ Returns engine status and Gemini availability.
  
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f1f21129-54ff-46a3-962f-b655cd78071e" />
 
+<<<<<<< HEAD
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8c774a6b-21a2-4f25-8eb9-22eb7ceaad5d" />
+=======
+>>>>>>> f8a4677 (Updated README)
 
 
 ### Search Results – Data Analyst
