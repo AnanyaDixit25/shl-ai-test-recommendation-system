@@ -7,47 +7,31 @@ import logging
 from ai.semantic_search import SemanticSearchEngine
 from ai.recommender import RecommenderEngine
 
-# =====================
-# Logging
-# =====================
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | API | %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | API | %(message)s")
 logger = logging.getLogger("API")
 
-# =====================
-# App
-# =====================
 app = FastAPI(
     title="AI Recommendation API",
-    version="1.0",
+    version="2.0",
     description="Enterprise-grade AI Semantic Search & Recommendation Platform"
 )
 
-# =====================
-# CORS
-# =====================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # dev-safe
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# =====================
-# Engines (lazy-loaded)
-# =====================
 semantic_engine: Optional[SemanticSearchEngine] = None
 recommender_engine: Optional[RecommenderEngine] = None
 
-# =====================
-# Schemas
-# =====================
+
 class SearchRequest(BaseModel):
     query: str
     top_k: int = 5
+
 
 class RecommendRequest(BaseModel):
     query: str
@@ -56,52 +40,41 @@ class RecommendRequest(BaseModel):
     adaptive: Optional[bool] = False
     max_duration: Optional[int] = None
     language: Optional[str] = None
+    level_filter: Optional[str] = None   # NEW: e.g. "Entry-Level", "Graduate", "Manager"
 
-# =====================
-# Lifecycle
-# =====================
+
 @app.on_event("startup")
 def startup_event():
     global semantic_engine, recommender_engine
     logger.info("Initializing AI engines...")
-
     semantic_engine = SemanticSearchEngine()
     recommender_engine = RecommenderEngine()
+    logger.info("AI engines ready ✅")
 
-    logger.info("AI engines initialized successfully ✅")
-
-# =====================
-# Routes
-# =====================
 
 @app.get("/")
 def root():
-    return {
-        "status": "running",
-        "service": "AI Recommendation API",
-        "version": "1.0"
-    }
+    return {"status": "running", "service": "AI Recommendation API", "version": "2.0"}
+
 
 @app.get("/health")
 def health():
     return {
         "status": "healthy",
         "semantic_engine": semantic_engine is not None,
-        "recommender_engine": recommender_engine is not None
+        "recommender_engine": recommender_engine is not None,
     }
+
 
 @app.post("/semantic-search")
 def semantic_search(req: SearchRequest):
     try:
         results = semantic_engine.search(req.query, top_k=req.top_k)
-        return {
-            "query": req.query,
-            "count": len(results),
-            "results": results
-        }
+        return {"query": req.query, "count": len(results), "results": results}
     except Exception as e:
-        logger.error(f"Semantic search error: {str(e)}")
+        logger.error(f"Semantic search error: {e}")
         return {"error": "semantic_search_failed", "message": str(e)}
+
 
 @app.post("/recommend")
 def recommend(req: RecommendRequest):
@@ -113,25 +86,14 @@ def recommend(req: RecommendRequest):
             adaptive=req.adaptive,
             max_duration=req.max_duration,
             language=req.language,
+            level_filter=req.level_filter,    # NEW
         )
-        return {
-            "query": req.query,
-            "count": len(results),
-            "results": results
-        }
+        return {"query": req.query, "count": len(results), "results": results}
     except Exception as e:
-        logger.error(f"Recommendation error: {str(e)}")
+        logger.error(f"Recommendation error: {e}")
         return {"error": "recommendation_failed", "message": str(e)}
 
-# =====================
-# Entrypoint
-# =====================
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(
-        "fastapi_api_layer:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True,
-        log_level="info"
-    )
+    uvicorn.run("fastapi_api_layer:app", host="0.0.0.0", port=8000, reload=True, log_level="info")
